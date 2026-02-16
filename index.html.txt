@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big 12 WBB Projection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>2026 Big 12 WBB Tournament Simulation</h1>
+    <p>Adjusted for Neutral Court, Recent Form, and H2H Matchups</p>
+</header>
+
+<nav>
+    <a href="index.html">Summary</a>
+    <a href="baylor.html">Baylor Focus</a>
+    <a href="data.html">Code & Data</a>
+</nav>
+
+<div class="container">
+    <h2>Projected Bracket</h2>
+    <p>This visualization shows the most likely path for each team based on 10,000 simulations.</p>
+    <img src="bracket.png" alt="Tournament Bracket Projection" class="bracket-img">
+
+    <h2>Tournament Probabilities</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Seed</th>
+                <th>Team</th>
+                <th>Make Semis</th>
+                <th>Make Finals</th>
+                <th>Win Championship</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>TCU</td><td>81.6%</td><td>66.3%</td><td>46.1%</td></tr>
+            <tr><td>2</td><td>West Virginia</td><td>91.2%</td><td>37.5%</td><td>16.6%</td></tr>
+            <tr class="baylor-highlight"><td>3</td><td>Baylor</td><td>78.4%</td><td>53.0%</td><td>16.2%</td></tr>
+            <tr><td>4</td><td>Texas Tech</td><td>72.0%</td><td>20.4%</td><td>13.5%</td></tr>
+            <tr><td>8</td><td>Iowa State</td><td>17.1%</td><td>9.1%</td><td>3.5%</td></tr>
+            <tr><td>6</td><td>Oklahoma St.</td><td>19.1%</td><td>7.6%</td><td>2.8%</td></tr>
+            <tr><td>5</td><td>Colorado</td><td>21.0%</td><td>3.2%</td><td>0.9%</td></tr>
+            <tr><td>12</td><td>Kansas</td><td>6.9%</td><td>0.8%</td><td>0.2%</td></tr>
+            <tr><td>7</td><td>Arizona State</td><td>5.5%</td><td>1.1%</td><td>0.1%</td></tr>
+            <tr><td>9-16</td><td>Field</td><td><1.0%</td><td><0.5%</td><td><0.1%</td></tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
