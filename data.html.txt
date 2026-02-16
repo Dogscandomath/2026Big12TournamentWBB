@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data & Simulation Code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Simulation Methodology & Data</h1>
+</header>
+
+<nav>
+    <a href="index.html">Summary</a>
+    <a href="baylor.html">Baylor Focus</a>
+    <a href="data.html">Code & Data</a>
+</nav>
+
+<div class="container">
+    <h2>Raw Input Data (SRS & Seeds)</h2>
+    <p>SRS (Simple Rating System) data provided by user. Standard Deviation used: 10.3 (Neutral Court).</p>
+    <table>
+        <thead>
+            <tr><th>Seed</th><th>Team</th><th>SRS Rating</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>TCU</td><td>32.9</td></tr>
+            <tr><td>2</td><td>West Virginia</td><td>30.5</td></tr>
+            <tr><td>3</td><td>Baylor</td><td>25.1</td></tr>
+            <tr><td>4</td><td>Texas Tech</td><td>25.1</td></tr>
+            <tr><td>5</td><td>Colorado</td><td>20.2</td></tr>
+            <tr><td>6</td><td>Oklahoma St.</td><td>26.3</td></tr>
+            <tr><td>7</td><td>Arizona State</td><td>17.2</td></tr>
+            <tr><td>8</td><td>Iowa State</td><td>24.7</td></tr>
+            <tr><td>9-16</td><td>Others</td><td><17.0</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Python Simulation Code</h2>
+    <p>This code runs 10,000 simulations using the Monte Carlo method, with specific overrides for Head-to-Head results.</p>
+    <div class="code-block">
+<pre>
+def simulate_game(team_a, team_b):
+    srs_a = team_a['srs']
+    srs_b = team_b['srs']
+    
+    # Defaults
+    margin = srs_a - srs_b
+    
+    # Overrides based on User Inputs
+    
+    # 1. Baylor vs OSU (Baylor +8.0)
+    # Reason: Road dominance in prior matchup
+    if (team_a['team'] == 'Baylor' and team_b['team'] == 'Oklahoma St.'):
+        margin = 8.0 
+
+    # 2. Baylor vs WVU (Baylor +4.5)
+    # Reason: Transitive property via Utah (Baylor +23 vs WVU relative to Utah)
+    if (team_a['team'] == 'Baylor' and team_b['team'] == 'West Virginia'):
+        margin = 4.5
+
+    # 3. Baylor vs Tech (Tech +3.5)
+    # Reason: Tech won at Baylor
+    if (team_a['team'] == 'Baylor' and team_b['team'] == 'Texas Tech'):
+        margin = -3.5 # Tech favored
+        
+    # 4. WVU vs Tech (Tech +6.0)
+    # Reason: Tech won at WVU
+    if (team_a['team'] == 'West Virginia' and team_b['team'] == 'Texas Tech'):
+        margin = -6.0 # Tech favored
+
+    # Win Probability Calculation
+    prob_a = 0.5 * (1 + np.math.erf(margin / (10.3 * np.sqrt(2))))
+    
+    if np.random.rand() < prob_a:
+        return team_a
+    else:
+        return team_b
+</pre>
+    </div>
+</div>
+
+</body>
+</html>
